@@ -26,6 +26,7 @@ let package = Package(
         .target(
             name: "GoongDirections",
             dependencies: ["Polyline", "Turf"]),
+            path: "GoongDirections",
         .testTarget(
             name: "GoongDirectionsTests",
             dependencies: ["GoongDirections"]),
