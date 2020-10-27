@@ -1,0 +1,6 @@
+framework module GoongDirections {
+  umbrella header "GoongDirections.h"
+
+  export *
+  module * { export * }
+}
