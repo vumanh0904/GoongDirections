@@ -4,3 +4,8 @@ framework module GoongDirections {
   export *
   module * { export * }
 }
+
+module GoongDirections.Swift {
+    header "GoongDirections-Swift.h"
+    requires objc
+}
