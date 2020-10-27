@@ -25,8 +25,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "GoongDirections",
-            dependencies: ["Polyline", "Turf"]),
-            path: "GoongDirections",
+            dependencies: ["Polyline", "Turf"]
+            path: "GoongDirections"
+            ),
         .testTarget(
             name: "GoongDirectionsTests",
             dependencies: ["GoongDirections"]),
