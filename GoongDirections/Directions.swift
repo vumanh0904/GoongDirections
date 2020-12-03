@@ -511,11 +511,7 @@ open class Directions: NSObject {
         let includesQuery = httpMethod != "POST"
         var params = (includesQuery ? options.urlQueryItems : [])
         params += [URLQueryItem(name: "api_key", value: credentials.accessToken)]
-        
-        if let skuToken = credentials.skuToken {
-            params += [URLQueryItem(name: "sku", value: skuToken)]
-        }
-        
+                 
         let unparameterizedURL = URL(string: includesQuery ? options.path : options.abridgedPath, relativeTo: credentials.host)!
         var components = URLComponents(url: unparameterizedURL, resolvingAgainstBaseURL: true)!
         components.queryItems = params
@@ -535,12 +531,12 @@ open class Directions: NSObject {
     open func urlRequest(forCalculating options: DirectionsOptions) -> URLRequest {
         let getURL = self.url(forCalculating: options, httpMethod: "GET")
         var request = URLRequest(url: getURL)
-        if getURL.absoluteString.count > MaximumURLLength {
-            request.url = url(forCalculating: options, httpMethod: "POST")
+        if options.waypoints.count > 2 {
+            request.url = url(forCalculating: options, httpMethod: "GET")
             
             let body = options.httpBody.data(using: .utf8)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
+            request.httpMethod = "GET"
             request.httpBody = body
         }
         request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
