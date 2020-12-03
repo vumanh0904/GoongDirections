@@ -531,14 +531,14 @@ open class Directions: NSObject {
     open func urlRequest(forCalculating options: DirectionsOptions) -> URLRequest {
         let getURL = self.url(forCalculating: options, httpMethod: "GET")
         var request = URLRequest(url: getURL)
-        if options.waypoints.count > 2 {
-            request.url = url(forCalculating: options, httpMethod: "GET")
-            
-            let body = options.httpBody.data(using: .utf8)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "GET"
-            request.httpBody = body
-        }
+//        if options.waypoints.count > 2 {
+//            request.url = url(forCalculating: options, httpMethod: "GET")
+//
+//            let body = options.httpBody.data(using: .utf8)
+//            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//            request.httpMethod = "GET"
+//            request.httpBody = body
+//        }
         request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
         return request
     }

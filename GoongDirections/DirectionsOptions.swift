@@ -381,7 +381,7 @@ open class DirectionsOptions: Codable {
         guard let coordinates = self.coordinates else { return "" }
         var components = URLComponents()
         components.queryItems = urlQueryItems + [
-            URLQueryItem(name: "coordinates", value: coordinates),
+            URLQueryItem(name: "destination", value: coordinates),
         ]
         return components.percentEncodedQuery ?? ""
     }

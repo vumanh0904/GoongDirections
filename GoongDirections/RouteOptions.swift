@@ -166,11 +166,9 @@ open class RouteOptions: DirectionsOptions {
             let separated = coordinates.components(separatedBy: ";")
             if let origin = separated.first {
                 params.append(URLQueryItem(name: "origin", value: origin))
-            }
-            if let destination = separated.last {
+                let desination = coordinates.replacingOccurrences(of: origin + ";", with: "")
                 params.append(URLQueryItem(name: "destination", value: destination))
             }
-            
         }
         return params
     }
